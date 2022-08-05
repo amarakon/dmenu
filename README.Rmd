@@ -1,0 +1,33 @@
+---
+title: dmenu
+output: amaryaml::github
+---
+```{r, setup, include = FALSE}
+library(knitr)
+opts_chunk$set(echo = FALSE, cache = TRUE)
+```
+
+This is my custom build of dmenu.
+It includes some excellent feauteres I added in myself that you will not see in any other dmenu build.
+For example, the caret is colored and it does not move when typing a password.
+
+# Patches
+
+```{r, patches}
+feature = c("Color fonts (emojis) work",
+			"Colored caret",
+			"Paste with tradiotional keybindings",
+			"Select multiple items",
+			"Use dmenu for password authentication"
+)
+patch = c("[allow-color-font](https://github.com/amarakon/dotfiles/tree/master/etc/portage/patches/x11-misc/dmenu/dmenu-allow-color-font-5.0.diff)",
+		  "[colored-caret](https://github.com/amarakon/dotfiles/tree/master/etc/portage/patches/x11-misc/dmenu/dmenu-colored-caret-5.0.diff)",
+		  "[easypaste](https://github.com/amarakon/dotfiles/tree/master/etc/portage/patches/x11-misc/dmenu/dmenu-easypaste-5.0.diff)",
+		  "[multi-selection](https://github.com/amarakon/dotfiles/tree/master/etc/portage/patches/x11-misc/dmenu/dmenu-multi-selection-4.9.diff)",
+		  "[password](https://github.com/amarakon/dotfiles/tree/master/etc/portage/patches/x11-misc/dmenu/dmenu-password-5.0.diff)"
+)
+
+patches = data.frame(feature, patch)
+
+kable(patches, col.names = c("Feature", "Patch"))
+```
